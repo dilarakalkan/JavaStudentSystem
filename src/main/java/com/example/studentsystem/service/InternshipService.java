@@ -1,7 +1,6 @@
 package com.example.studentsystem.service;
-
 import com.example.studentsystem.dto.InternshipDTO;
-import com.example.studentsystem.entity.Internship;
+
 import java.util.List;
 
 public interface InternshipService {

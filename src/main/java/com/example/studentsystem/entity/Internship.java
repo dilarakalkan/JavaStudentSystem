@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 
 
 @Entity
-
 public class Internship {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +17,7 @@ public class Internship {
     private String company;
     private String city;
     private String field;
+    private LocalDateTime applicationDate;
 
     public Long getId() {
         return id;
@@ -67,7 +67,7 @@ public class Internship {
         this.applicationDate = applicationDate;
     }
 
-    private LocalDateTime applicationDate;
+
 
 
 }

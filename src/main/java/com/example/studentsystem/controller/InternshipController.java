@@ -13,16 +13,19 @@ public class InternshipController {
     private final InternshipService internshipService;
 
     public InternshipController(InternshipService internshipService) {
+
         this.internshipService = internshipService;
     }
 
     @GetMapping
     public List<InternshipDTO> getAllInternships() {
+
         return internshipService.getAllInternships();
     }
 
     @GetMapping("/{id}")
     public InternshipDTO getInternshipById(@PathVariable Long id) {
+
         return internshipService.getInternshipById(id);
     }
 
