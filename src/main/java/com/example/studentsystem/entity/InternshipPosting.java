@@ -6,13 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDateTime;
+
+//şirketin açtığı ilan
 
 @Getter
 @Setter
 @Entity
-public class Internship {
+public class InternshipPosting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -16,7 +16,7 @@ public class User {
 
 //bir öğrenci sadece bir şirkette çalışabilir
     @ManyToOne
-    @JoinColumn(name="company_id") //foreign key oluşturuyoruz company_id
+    @JoinColumn(name="companies") //foreign key oluşturuyoruz company_id
     private Company company;
 }
 

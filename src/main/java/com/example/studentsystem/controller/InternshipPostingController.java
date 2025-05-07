@@ -1,55 +1,54 @@
 package com.example.studentsystem.controller;
 
-import com.example.studentsystem.dto.InternshipDTO;
-import com.example.studentsystem.entity.Internship;
-import com.example.studentsystem.service.InternshipService;
+import com.example.studentsystem.dto.InternshipPostingDTO;
+import com.example.studentsystem.service.InternshipPostingService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("api/internships")
-public class InternshipController {
+public class InternshipPostingController {
 
-    private final InternshipService internshipService;
+    private final InternshipPostingService internshipService;
 
-    public InternshipController(InternshipService internshipService) {
+    public InternshipPostingController(InternshipPostingService internshipService) {
         this.internshipService = internshipService;
     }
 
     // Get all internships
     @GetMapping
-    public List<InternshipDTO> getAllInternships() {
+    public List<InternshipPostingDTO> getAllInternships() {
         return internshipService.getAllInternships();
     }
 
     // Get internship by ID
     @GetMapping("/{id}")
-    public InternshipDTO getInternshipById(@PathVariable Long id) {
+    public InternshipPostingDTO getInternshipById(@PathVariable Long id) {
         return internshipService.getInternshipById(id);
     }
 
     // Filter internships by field
     @GetMapping("/field/{field}")
-    public List<InternshipDTO> filterByField(@PathVariable String field) {
+    public List<InternshipPostingDTO> filterByField(@PathVariable String field) {
         return internshipService.filterByField(field);
     }
 
     // Filter internships by city
     @GetMapping("/city/{city}")
-    public List<InternshipDTO> filterByCity(@PathVariable String city) {
+    public List<InternshipPostingDTO> filterByCity(@PathVariable String city) {
         return internshipService.filterByCity(city);
     }
 
     // Create a new internship
     @PostMapping
-    public InternshipDTO createInternship(@RequestBody InternshipDTO internshipDTO) {
+    public InternshipPostingDTO createInternship(@RequestBody InternshipPostingDTO internshipDTO) {
         return internshipService.createInternship(internshipDTO);
     }
 
     // Update an existing internship
     @PutMapping("/{id}")
-    public InternshipDTO updateInternship(@PathVariable Long id, @RequestBody InternshipDTO internshipDTO) {
+    public InternshipPostingDTO updateInternship(@PathVariable Long id, @RequestBody InternshipPostingDTO internshipDTO) {
         return internshipService.updateInternship(id, internshipDTO);
     }
 

@@ -1,15 +1,29 @@
 package com.example.studentsystem.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
-@Entity(name = "COMPANIES")
-public class Company extends User {
+@Getter
+@Setter
+@Entity
+@Table(name = "COMPANIES")
+public class Company {
 
-    private String companyName;
-    private String sector;
-    private String location;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @OneToMany(mappedBy = "company")
+    private String name;
+    private String email;
+    private String password;
+    private String description;
+
+
+    //bir şirket ilanına birden fazla öğrenci başvuru yapabilir
+
+    @ManyToMany(mappedBy = "companies")
     private List<Student> students;
 }
