@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-//implemantasyona @service verme
+
+@Service
 
 public class PaymentServiceImpl implements PaymentService {
     private final PaymentRepository paymentRepository;
@@ -59,5 +60,20 @@ public class PaymentServiceImpl implements PaymentService {
                 .stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public PaymentDTO createPayment(PaymentDTO paymentDTO) {
+        return null;
+    }
+
+    @Override
+    public PaymentDTO updatePayment(Long id, PaymentDTO paymentDTO) {
+        return null;
+    }
+
+    @Override
+    public void deletePayment(Long id) {
+
     }
 }

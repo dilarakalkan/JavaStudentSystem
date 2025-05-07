@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@Service
 public class InternshipServiceImpl implements InternshipService {
 
     private final InternshipRepository internshipRepository;
@@ -27,6 +27,21 @@ public class InternshipServiceImpl implements InternshipService {
                 stream()
                 .map(internship -> new InternshipDTO(internship.getId(), internship.getTitle(), internship.getCompany(), internship.getField(), internship.getApplicationDate()))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public InternshipDTO createInternship(InternshipDTO internshipDTO) {
+        return null;
+    }
+
+    @Override
+    public InternshipDTO updateInternship(Long id, InternshipDTO internshipDTO) {
+        return null;
+    }
+
+    @Override
+    public void deleteInternship(Long id) {
+
     }
 
 

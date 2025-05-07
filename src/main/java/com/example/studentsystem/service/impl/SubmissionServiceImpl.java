@@ -1,20 +1,19 @@
 package com.example.studentsystem.service.impl;
 
+
 import com.example.studentsystem.entity.Submission;
 import com.example.studentsystem.repository.SubmissionRepository;
 import com.example.studentsystem.service.SubmissionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-
+@Service
 public class SubmissionServiceImpl implements SubmissionService {
 
     private final SubmissionRepository submissionRepository;
 
-    @Autowired
     public SubmissionServiceImpl(SubmissionRepository submissionRepository) {
         this.submissionRepository = submissionRepository;
     }

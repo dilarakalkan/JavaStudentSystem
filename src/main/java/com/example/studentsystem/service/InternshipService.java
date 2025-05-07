@@ -1,4 +1,5 @@
 package com.example.studentsystem.service;
+
 import com.example.studentsystem.dto.InternshipDTO;
 
 import java.util.List;
@@ -12,4 +13,10 @@ public interface InternshipService {
     List<InternshipDTO> filterByField(String field);
 
     List<InternshipDTO> filterByCity(String city);
+
+    InternshipDTO createInternship(InternshipDTO internshipDTO);
+
+    InternshipDTO updateInternship(Long id, InternshipDTO internshipDTO);
+
+    void deleteInternship(Long id);
 }

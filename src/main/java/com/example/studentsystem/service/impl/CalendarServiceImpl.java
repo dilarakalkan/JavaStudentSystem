@@ -3,17 +3,16 @@ package com.example.studentsystem.service.impl;
 import com.example.studentsystem.entity.Calendar;
 import com.example.studentsystem.repository.CalendarRepository;
 import com.example.studentsystem.service.CalendarService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-
+@Service
 public class CalendarServiceImpl implements CalendarService {
     private final CalendarRepository calendarRepository;
 
-    @Autowired
+
     public CalendarServiceImpl(CalendarRepository calendarRepository) {
         this.calendarRepository = calendarRepository;
     }

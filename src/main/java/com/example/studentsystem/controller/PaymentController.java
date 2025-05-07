@@ -2,6 +2,7 @@ package com.example.studentsystem.controller;
 
 import com.example.studentsystem.dto.PaymentDTO;
 import com.example.studentsystem.service.PaymentService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,5 +38,26 @@ public class PaymentController {
             @PathVariable String status){
         return paymentService.filterByStatus(status);
     }
+
+    //yeni bir ödeme eklemek için
+    @PostMapping()
+    public ResponseEntity<PaymentDTO> createPayment(@RequestBody PaymentDTO paymentDTO){
+        PaymentDTO createdPayment=paymentService.createPayment(paymentDTO);
+        return ResponseEntity.ok(createdPayment);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PaymentDTO> updatePayment(
+            @PathVariable Long id,
+            @RequestBody PaymentDTO paymentDTO){
+        PaymentDTO updatePayment=paymentService.updatePayment(id,paymentDTO);
+        return ResponseEntity.ok(updatePayment);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePayment(@PathVariable Long id){
+        paymentService.deletePayment(id);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }

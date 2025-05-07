@@ -1,31 +1,15 @@
 package com.example.studentsystem.service;
 
+
 import com.example.studentsystem.entity.User;
-import com.example.studentsystem.dto.UserDTO;
-import org.springframework.stereotype.Service;
+
 import java.util.List;
-
-//@service ekleme
-
+import java.util.Optional;
 
 public interface UserService {
-    List<UserDTO> getAllUsers();
-
-    UserDTO getUserById(Long id);
-
-    List<UserDTO> filterStudentNumber(String studentNumber);
-
-    List<UserDTO> filterByPassword(String password);
-
-    void createUser(UserDTO userDTO);
-
-    void updateUser(Long id, UserDTO userDTO);
-
+    List<User> getAllUsers();
+    Optional<User> getUserById(Long id);
+    User getUserByEmail(String email);
+    User saveUser(User user);
     void deleteUser(Long id);
-
-    User findByEmail(String email);
-
-    boolean validateUser(UserDTO userDTO);
-
-    User registerUser(User user);
 }
