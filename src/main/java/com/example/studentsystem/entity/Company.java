@@ -1,29 +1,45 @@
 package com.example.studentsystem.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.time.LocalDate;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "COMPANIES")
+@Table(name = "companies")
 public class Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String email;
-    private String password;
-    private String description;
+    @Column(nullable = false)
+    private String companyName;
 
+    @Column(nullable = false)
+    private String title;
 
-    //bir şirket ilanına birden fazla öğrenci başvuru yapabilir
+    @Column(nullable = false)
+    private String location;
 
-    @ManyToMany(mappedBy = "companies")
-    private List<Student> students;
+    @Column(nullable = false)
+    private String workType;
+
+    @Column(nullable = false)
+    private String sector;
+
+    @Column(nullable = false)
+    private LocalDate publishDate;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER_ID", referencedColumnName = "id")
+    private User user;
+
 }

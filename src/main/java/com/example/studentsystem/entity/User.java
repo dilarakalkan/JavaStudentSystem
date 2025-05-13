@@ -1,22 +1,28 @@
 package com.example.studentsystem.entity;
+
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "APP_USERS")
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;
+
+    private String name;
+
     private String email;
+
     private String password;
 
-//bir öğrenci sadece bir şirkette çalışabilir
-    @ManyToOne
-    @JoinColumn(name="companies") //foreign key oluşturuyoruz company_id
-    private Company company;
-}
 
+}

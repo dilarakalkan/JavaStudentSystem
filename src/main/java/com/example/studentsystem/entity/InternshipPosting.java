@@ -1,31 +1,40 @@
 package com.example.studentsystem.entity;
 
+//şirketin açtığı ilan
 import jakarta.persistence.*;
+
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-
-//şirketin açtığı ilan
 
 @Getter
 @Setter
-
+@NoArgsConstructor
 @Entity
+@Table(name = "internship_postings")
 public class InternshipPosting {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
-        private String title;
-        private String description;
-        public LocalDate startDate;
-        private LocalDate endDate;
+    private Long id;
+    
+    @Column(nullable = false)
+    private String title;
 
-        @ManyToOne
-        private Company company;
-        {
-    }
+    private String description;
+
+    private String requirements;
+    private String location;
+
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+
+    private LocalDateTime applicationDeadline;
+
+    private String internshipStatus;
+
 }
 
 

@@ -1,31 +1,30 @@
 package com.example.studentsystem.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.List;
 
-@Getter
-@Setter
+
+@Data
+@NoArgsConstructor
 @Entity
+@Table(name = "students")
 public class Student {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+
+    @Column(name= "UNIVERSITY", nullable = false)
     private String university;
+    @Column(nullable = false)
     private String department;
-    private String email;
-    private String password;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER_ID", referencedColumnName = "id")
+    private User user;
 
 
-    // Çoktan çoğa ilişki
-    @ManyToMany
-    @JoinTable(
-            name = "student_company",
-            joinColumns = @JoinColumn(name = "student_id"),  //  dış anahtar
-            inverseJoinColumns = @JoinColumn(name = "company_id")  // Bu, company tablosundaki dış anahtar
-    )
-    private List<Company> companies;  // Öğrencinin başvurduğu şirketler
 }

@@ -8,7 +8,5 @@ import java.util.List;
 
 @Repository
 public interface InternshipPostingRepository extends JpaRepository<InternshipPosting,Long> {
-    List<InternshipPosting> findByTitleContainingOrCompanyContaining(String title, String company);
-    List<InternshipPosting> findByField(String field);
-    List<InternshipPosting> findByCity(String city);
+
 }
