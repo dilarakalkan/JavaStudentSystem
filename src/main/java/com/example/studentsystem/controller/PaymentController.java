@@ -16,12 +16,10 @@ public class PaymentController {
     public PaymentController(PaymentService paymentService) {
         this.paymentService = paymentService;
     }
-    //tüm ödemeler için get çağrısı
     @GetMapping
     public List<PaymentDTO> getAllPayments() {
         return paymentService.getAllPayments();
     }
-    //tek yapılacak olan ödemeler için
     @GetMapping("/{id}")
     public PaymentDTO getPaymentById(@PathVariable Long id) {
         return paymentService.getPaymentById(id);
@@ -32,14 +30,12 @@ public class PaymentController {
         return paymentService.filterByStudentName(studentName);
 
     }
-    //ödeme durumuna göre filtreleme yapmak için
+    //ödeme durumuna göre filtreleme
     @GetMapping("/status/{status}")
     public List<PaymentDTO> filterByStatus(
             @PathVariable String status){
         return paymentService.filterByStatus(status);
     }
-
-    //yeni bir ödeme eklemek için
     @PostMapping()
     public ResponseEntity<PaymentDTO> createPayment(@RequestBody PaymentDTO paymentDTO){
         PaymentDTO createdPayment=paymentService.createPayment(paymentDTO);

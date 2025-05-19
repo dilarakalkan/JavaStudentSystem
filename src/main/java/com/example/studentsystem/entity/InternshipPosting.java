@@ -1,40 +1,40 @@
 package com.example.studentsystem.entity;
 
-//şirketin açtığı ilan
 import jakarta.persistence.*;
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "internship_postings")
+@Table(name = "internship_posting")
 public class InternshipPosting {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @Column(nullable = false)
+    @Column(name = "TİTLE")
     private String title;
-
+    @Column(name="DESCRİPTİON")
     private String description;
-
-    private String requirements;
+    @Column(name="LOCATİON")
     private String location;
+    @Column(name="WORK_TYPE")
+    private String workType;
+    @Column(name="APPLICATION_DEADLINE")
+    private LocalDate applicationDeadline;
 
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    @ManyToOne
+    @JoinColumn(name = "company_id", nullable = false)
+    private Company company;
 
-    private LocalDateTime applicationDeadline;
-
-    private String internshipStatus;
-
+    @OneToMany(mappedBy = "internshipPosting", cascade = CascadeType.ALL)
+    private List<InternshipApplication> applications;
 }
-
-

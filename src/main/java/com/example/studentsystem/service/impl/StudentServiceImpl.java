@@ -1,6 +1,7 @@
 package com.example.studentsystem.service.impl;
 
 import com.example.studentsystem.dto.StudentDTO;
+import com.example.studentsystem.entity.Student;
 import com.example.studentsystem.repository.StudentRepository;
 import com.example.studentsystem.service.StudentService;
 import org.springframework.stereotype.Service;
@@ -24,13 +25,17 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public StudentDTO createStudent(StudentDTO studentDTO) {
-        return null;
+    public Student createStudent(StudentDTO studentDTO) {
+        Student student=new Student();
+        return studentRepository.save(student);
     }
 
     @Override
-    public StudentDTO updateStudent(Long id, StudentDTO studentDTO) {
-        return null;
+    public Student updateStudent(Long id, StudentDTO studentDTO) {
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Student not found with id " + id));
+        return studentRepository.save(student);
+
     }
 
     @Override

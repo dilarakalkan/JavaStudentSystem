@@ -12,14 +12,13 @@ public class InternshipPostingDTO {
     private String title;
     private String company;
     private String field;
-    private String description; // Eklenen alan
+    private String description;
     private LocalDateTime applicationDate;
 
-    // Varsayılan yapıcı metod
     public InternshipPostingDTO() {
     }
 
-    // Parametreli yapıcı metod
+    // constructor gerek var mı
     public InternshipPostingDTO(Long id, String title, String company, String field, String description, LocalDateTime applicationDate) {
         this.id = id;
         this.title = title;

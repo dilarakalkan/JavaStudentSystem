@@ -13,29 +13,20 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "companies")
+@Table(name = "COMPANY")
 public class Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name="COMPANY_NAME")
     private String companyName;
-
-    @Column(nullable = false)
-    private String title;
-
-    @Column(nullable = false)
+    @Column(name="LOCATİON")
     private String location;
-
-    @Column(nullable = false)
-    private String workType;
-
-    @Column(nullable = false)
+    @Column(name="SECTOR")
     private String sector;
-
-    @Column(nullable = false)
+    @Column(name = "PUBLIS_DATE")
     private LocalDate publishDate;
 
     @OneToOne(cascade = CascadeType.ALL)

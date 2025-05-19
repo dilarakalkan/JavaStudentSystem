@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/internship-postings")
 public class InternshipPostingController {
     private final InternshipPostingService internshipPostingService;
-//constructor injection ile servicei enjekte ediyoruz
     public InternshipPostingController(InternshipPostingService internshipPostService) {
         this.internshipPostingService = internshipPostService;
     }

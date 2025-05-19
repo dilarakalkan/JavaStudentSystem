@@ -9,18 +9,19 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "payments")
+@Table(name = "payment")
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(name="STUDENT_NAME")
     private String studentName;
-    @Column(nullable = false)
+    @Column(name="AMOUNT")
     private double amount;
+    @Column(name="STATUS")
     private String status;
-    @Column(nullable = false)
+    @Column(name="DATE")
     private LocalDate date;
-    @Column(length = 500)
+    @Column(name="DESCRİPTİON")
     private String description;
 }

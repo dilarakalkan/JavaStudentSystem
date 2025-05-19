@@ -1,6 +1,7 @@
 package com.example.studentsystem.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,19 +11,17 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "internship_applications")
+@Table(name = "internship_application")
 
 public class InternshipApplication {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
+    @Column(name = "APPLICATION_DATE")
     private LocalDateTime applicationDate;
-    private String coverLetter;
-
-    private String ApplicationStatus;
+    private String applicationStatus;
 
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
