@@ -7,14 +7,14 @@ import lombok.Setter;
 @Setter
 public class StudentDTO {
     private Long id;
-    private String name;
     private String university;
     private String department;
-    public StudentDTO(Long id,String name,String university,String Department){
-        this.id=id;
-        this.name=name;
-        this.university=university;
-        this.department=department;
-    }
+    private String studentNumber;
 
+    public StudentDTO(Long id, String university, String department, String studentNumber) {
+        this.id = id;
+        this.university = university;
+        this.department = department;
+        this.studentNumber = studentNumber;
+    }
 }

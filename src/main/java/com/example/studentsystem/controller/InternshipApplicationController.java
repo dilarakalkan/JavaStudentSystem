@@ -1,11 +1,14 @@
 package com.example.studentsystem.controller;
 
 import com.example.studentsystem.dto.InternshipApplicationDTO;
+import com.example.studentsystem.entity.Calendar;
+import com.example.studentsystem.entity.InternshipApplication;
 import com.example.studentsystem.service.InternshipApplicationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/internship-applications")
@@ -18,16 +21,11 @@ public class InternshipApplicationController {
     }
 
     @GetMapping
-    public ResponseEntity<List<InternshipApplicationDTO>> getAllApplications() {
-        List<InternshipApplicationDTO> applications = applicationService.getAllApplications();
+    public ResponseEntity<List<InternshipApplication>> getAllApplications() {
+        List<InternshipApplication> applications = applicationService.getAllApplications();
         return ResponseEntity.ok(applications);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<InternshipApplicationDTO> getApplicationById(@PathVariable Long id) {
-        InternshipApplicationDTO application = applicationService.getApplicationById(id);
-        return application != null ? ResponseEntity.ok(application) : ResponseEntity.notFound().build();
-    }
 //hepsi burdaki gibi olucak dto kaldırma
     @PostMapping
     public ResponseEntity<?> createApplication(@RequestBody InternshipApplicationDTO applicationDTO) {

@@ -1,10 +1,13 @@
 package com.example.studentsystem.service.impl;
+
 import com.example.studentsystem.dto.InternshipPostingDTO;
+import com.example.studentsystem.entity.InternshipPosting;
 import com.example.studentsystem.repository.InternshipPostingRepository;
 import com.example.studentsystem.service.InternshipPostingService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -17,22 +20,26 @@ public class InternshipPostingServiceImpl implements InternshipPostingService {
     }
 
     @Override
-    public List<InternshipPostingDTO> getAllPostings() {
-        return null;
+    public List<InternshipPosting> getAllPostings() {
+        return internshipPostingRepository.findAll();
     }
 
     @Override
-    public InternshipPostingDTO getPostingById(Long id) {
-        return null;
+    public Optional<InternshipPosting> getPostingById(Long id) {
+        return internshipPostingRepository.findById(id);
     }
 
     @Override
-    public InternshipPostingDTO createPosting(InternshipPostingDTO postingDTO) {
-        return null;
+    public InternshipPosting createPosting(InternshipPostingDTO postingDTO) {
+        InternshipPosting internshipPosting = new InternshipPosting();
+        internshipPostingRepository.save(internshipPosting);
+
+        return internshipPosting;
     }
 
     @Override
     public InternshipPostingDTO updatePosting(Long id, InternshipPostingDTO postingDTO) {
+
         return null;
     }
 

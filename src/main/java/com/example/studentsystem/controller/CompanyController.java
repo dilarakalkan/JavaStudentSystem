@@ -1,14 +1,16 @@
 package com.example.studentsystem.controller;
 
 import com.example.studentsystem.dto.CompanyDTO;
+import com.example.studentsystem.entity.Company;
 import com.example.studentsystem.service.CompanyService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("api/company")
+@RequestMapping("/api/company")
 public class CompanyController {
     private final CompanyService companyService;
 
@@ -17,17 +19,16 @@ public class CompanyController {
     }
 
     @GetMapping
-    public List<CompanyDTO> getAllCompanies() {
+    public List<Company> getAllCompanies() {
         return companyService.getAllCompanies();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<CompanyDTO> getCompanyById(@PathVariable Long id) {
-        CompanyDTO company = companyService.getCompanyById(id);
-        if (company == null) {
+        Optional<Company> company = companyService.getCompanyById(id);
+     {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(company);
     }
 
     @PostMapping

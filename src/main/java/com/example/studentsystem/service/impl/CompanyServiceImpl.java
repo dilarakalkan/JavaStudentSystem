@@ -7,6 +7,7 @@ import com.example.studentsystem.service.CompanyService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
@@ -15,30 +16,22 @@ public class CompanyServiceImpl implements CompanyService {
     public CompanyServiceImpl(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
     }
-
     @Override
-    public List<CompanyDTO> getAllCompanies() {
-        return null;
+    public List<Company> getAllCompanies() {
+        return companyRepository.findAll();
     }
-
     @Override
-    public CompanyDTO getCompanyById(Long id) {
-        return null;
+    public Optional<Company> getCompanyById(Long id) {
+        return companyRepository.findById(id);
     }
 
     @Override
     public Company createCompany(CompanyDTO companyDTO) {
-        Company company = new Company();
-        company.setCompanyName(companyDTO.getCompanyName());
-        company.setLocation(companyDTO.getLocation());
-        company.setSector(companyDTO.getSector());
-        companyRepository.save(company);
-        return company;
+        return null;
     }
 
     @Override
     public Company updateCompany(Long İD, CompanyDTO companyDTO) {
-
         return null;
     }
 
@@ -47,4 +40,3 @@ public class CompanyServiceImpl implements CompanyService {
 
     }
 }
-
