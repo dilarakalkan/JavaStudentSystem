@@ -1,6 +1,5 @@
 package com.example.studentsystem.dto;
 
-
 import lombok.Getter;
 import lombok.Setter;
 

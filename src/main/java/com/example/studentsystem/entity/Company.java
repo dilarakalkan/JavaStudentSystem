@@ -33,4 +33,6 @@ public class Company {
     @JoinColumn(name = "USER_ID", referencedColumnName = "id")
     private User user;
 
+    public void setSector(String sector) {
+    }
 }

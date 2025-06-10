@@ -11,14 +11,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
-
 public class InternshipApplicationServiceImpl implements InternshipApplicationService {
     private final InternshipApplicationRepository internshipApplicationRepository;
     private final StudentRepository studentRepository;
     private final InternshipPostingRepository internshipPostingRepository;
-
 
     public InternshipApplicationServiceImpl(InternshipApplicationRepository internshipApplicationRepository, StudentRepository studentRepository, InternshipPostingRepository internshipPostingRepository) {
         this.internshipApplicationRepository = internshipApplicationRepository;
@@ -38,12 +37,22 @@ public class InternshipApplicationServiceImpl implements InternshipApplicationSe
 
     @Override
     public List<InternshipApplicationDTO> getApplicationsByStatus(String status) {
-        return null;
+        return internshipApplicationRepository.findByApplicationStatus(status)
+                .stream()
+                .map(application -> {
+                    InternshipApplicationDTO dto = new InternshipApplicationDTO();
+                    dto.setId(application.getId());
+                    dto.setApplicationStatus(application.getApplicationStatus());
+                    dto.setStudentId(application.getStudent().getId());
+                    dto.setInternshipPostingId(application.getInternshipPosting().getId());
+                    return dto;
+                })
+                .collect(Collectors.toList());
     }
 
     @Override
     public InternshipApplication createApplication(InternshipApplicationDTO applicationDTO) {
-       String idAktifKullanici = null; //burası session'dan alınacak
+        Long idAktifKullanici = null; //burası session'dan alınacak
 
         Student student = studentRepository.getStudentByUserId(idAktifKullanici);
 
@@ -54,20 +63,20 @@ public class InternshipApplicationServiceImpl implements InternshipApplicationSe
         internshipApplication.setStudent(student);
         internshipApplication.setInternshipPosting(internshipPosting.get());
 
-
         internshipApplicationRepository.save(internshipApplication);
         return internshipApplication;
     }
 
     @Override
-    public InternshipApplication updateApplication(Long id,InternshipApplicationDTO applicationDTO) {
-        InternshipApplication internshipApplication=new InternshipApplication();
+    public InternshipApplication updateApplication(Long id, InternshipApplicationDTO applicationDTO) {
+        InternshipApplication internshipApplication = new InternshipApplication();
         internshipApplicationRepository.save(internshipApplication);
         return internshipApplication;
     }
 
     @Override
     public void deleteApplication(Long id) {
-
+        internshipApplicationRepository.findById(id)
+                .ifPresent(application -> internshipApplicationRepository.delete(application));
     }
 }

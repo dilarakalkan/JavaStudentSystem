@@ -10,6 +10,6 @@ public interface InternshipPostingService {
     List<InternshipPosting> getAllPostings();
     Optional<InternshipPosting> getPostingById(Long id);
     InternshipPosting createPosting(InternshipPostingDTO postingDTO);
-    InternshipPostingDTO updatePosting(Long id,InternshipPostingDTO postingDTO);
+    InternshipPosting updatePosting(Long id,InternshipPostingDTO postingDTO);
     void deletePosting(Long id);
 }

@@ -1,7 +1,9 @@
 package com.example.studentsystem.controller;
 
+
 import com.example.studentsystem.dto.InternshipPostingDTO;
 import com.example.studentsystem.entity.InternshipPosting;
+import com.example.studentsystem.enums.MessageEnum;
 import com.example.studentsystem.service.InternshipPostingService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,12 +35,14 @@ public class InternshipPostingController {
     //düzenle
     @PostMapping
     public ResponseEntity<?> createPosting(@RequestBody InternshipPostingDTO internshipPostingDTO) {
-        return ResponseEntity.ok().body(internshipPostingService.createPosting(internshipPostingDTO));
+        internshipPostingService.createPosting(internshipPostingDTO);
+        return ResponseEntity.ok(MessageEnum.ISLEM_BASARILI);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updatePosting(@PathVariable Long id, @RequestBody InternshipPostingDTO postingDTO) {
-        return ResponseEntity.ok().body(internshipPostingService.updatePosting(id, postingDTO));
+    public ResponseEntity<?> updatePosting(@PathVariable Long id , @RequestBody InternshipPostingDTO postingDTO) {
+        InternshipPosting updatedPosting = internshipPostingService.updatePosting(id, postingDTO);
+        return ResponseEntity.ok(MessageEnum.ISLEM_BASARILI);
     }
 
     @DeleteMapping

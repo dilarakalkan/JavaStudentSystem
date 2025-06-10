@@ -37,4 +37,6 @@ public class InternshipPosting {
 
     @OneToMany(mappedBy = "internshipPosting", cascade = CascadeType.ALL)
     private List<InternshipApplication> applications;
-}
+
+    }
+

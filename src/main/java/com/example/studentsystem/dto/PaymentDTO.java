@@ -15,14 +15,4 @@ public class PaymentDTO {
     private LocalDate date;
     private String description;
 
-
-public PaymentDTO(Long id,String studentName,double amount,String status,LocalDate date,String description){
-    this.id=id;
-    this.studentName=studentName;
-    this.amount=amount;
-    this.status=status;
-    this.date=date;
-    this.description=description;
-
-}
 }

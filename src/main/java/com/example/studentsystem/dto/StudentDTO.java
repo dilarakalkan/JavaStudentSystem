@@ -1,20 +1,16 @@
 package com.example.studentsystem.dto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class StudentDTO {
     private Long id;
+    private String studentNumber;
     private String university;
     private String department;
-    private String studentNumber;
-
-    public StudentDTO(Long id, String university, String department, String studentNumber) {
-        this.id = id;
-        this.university = university;
-        this.department = department;
-        this.studentNumber = studentNumber;
-    }
+    private UserDTO user;
 }

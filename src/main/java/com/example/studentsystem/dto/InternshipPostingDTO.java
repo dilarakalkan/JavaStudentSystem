@@ -15,18 +15,6 @@ public class InternshipPostingDTO {
     private String description;
     private LocalDateTime applicationDate;
 
-    public InternshipPostingDTO() {
-    }
-
-    // constructor gerek var mı
-    public InternshipPostingDTO(Long id, String title, String company, String field, String description, LocalDateTime applicationDate) {
-        this.id = id;
-        this.title = title;
-        this.company = company;
-        this.field = field;
-        this.description = description;
-        this.applicationDate = applicationDate;
-    }
 
 
 }

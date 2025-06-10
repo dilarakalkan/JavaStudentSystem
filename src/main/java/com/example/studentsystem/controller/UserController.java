@@ -1,7 +1,9 @@
 package com.example.studentsystem.controller;
 
 
+import com.example.studentsystem.dto.UserDTO;
 import com.example.studentsystem.entity.User;
+import com.example.studentsystem.enums.MessageEnum;
 import com.example.studentsystem.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,9 +40,10 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User savedUser = userService.saveUser(user);
-        return ResponseEntity.ok(savedUser);
+    public ResponseEntity<MessageEnum> createUser(@RequestBody UserDTO userDTO) {
+        userService.createUser(userDTO);
+        return ResponseEntity.ok(MessageEnum.ISLEM_BASARILI);
+
     }
 
     @PutMapping("/{id}")
